@@ -1,16 +1,12 @@
 package com.cg.EmployeeCrudOperation;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.cg.EmployeeCrudOperation.domain.Employee;
 
-public class Main {
-	
+public class Main {	
 	
 	private Employee emp;
 	Scanner sc;
@@ -21,7 +17,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		new Main().start();
-
 	}
 	
 	public void saveOrUpdate() {
@@ -39,6 +34,10 @@ public class Main {
 		emp.setFees(sc.nextInt());
 		
 		Configuration cf=new Configuration();
+		cf.addAnnotatedClass(com.cg.EmployeeCrudOperation.domain.Employee.class);
+		//configure method will load xml and find data from it
+		cf.configure();
+		
 		SessionFactory sf=cf.buildSessionFactory();
 		Session session=sf.openSession();
 		
