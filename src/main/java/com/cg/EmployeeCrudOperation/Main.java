@@ -6,6 +6,8 @@ import org.hibernate.cfg.Configuration;
 
 import com.cg.EmployeeCrudOperation.domain.Employee;
 
+import jakarta.transaction.Transaction;
+
 public class Main {	
 	
 	private Employee emp;
@@ -17,6 +19,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		new Main().start();
+		
 	}
 	
 	public void saveOrUpdate() {
@@ -40,8 +43,11 @@ public class Main {
 		
 		SessionFactory sf=cf.buildSessionFactory();
 		Session session=sf.openSession();
-		
+		org.hibernate.Transaction t=session.beginTransaction();
 		session.persist(emp);
+		t.commit();
+		session.close();
+		sf.close();
 
 	}
 

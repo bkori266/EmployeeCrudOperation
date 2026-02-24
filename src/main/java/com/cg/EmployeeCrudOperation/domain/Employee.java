@@ -10,8 +10,11 @@ public class Employee {
 	private int id;
 	private String name;
 	private String course;
-	private long fees;	
+	private long fees;
 	
+	void display() {
+		System.out.println("Hello");
+	}
 	
 	public int getId() {
 		return id;
