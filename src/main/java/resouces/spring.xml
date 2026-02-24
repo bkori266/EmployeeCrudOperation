@@ -1,0 +1,5 @@
+<bean id="employee" class="com.cg.EmployeeCrudOperation.domain.Employee">
+
+
+
+</bean>
